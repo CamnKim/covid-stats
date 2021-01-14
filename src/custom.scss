@@ -1,0 +1,97 @@
+// theme overwrites
+
+// variables
+$gradientNav: linear-gradient(to right, #ef271b, #f5821d);
+$gradientBG: linear-gradient(to right, #404040, #707070);
+$borderRad: 15px;
+
+html {
+    height: 100%;
+}
+
+.navbar {
+    background-image: $gradientNav;
+    margin-bottom: auto;
+
+    .nav-link {
+        color: white;
+
+        &:visited {
+            color: white;
+        }
+    }
+}
+
+body {
+    background-image: $gradientBG;
+    height: 100%;
+
+    #root {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.home-body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    background-image: url("images/cvdbg.png"),
+        linear-gradient(to right, #404040, #707070);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#navbarNav {
+    transition: all 1.5s ease;
+}
+
+.homeInfo {
+    //margin-top: 25%;
+    color: white;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 25%;
+}
+
+.parent {
+    height: 90%;
+    .Row {
+        height: 100%;
+        .Col {
+            height: 100%;
+        }
+    }
+}
+
+.barParent {
+    background-color: #b3b3b3;
+    height: 800px;
+    margin-bottom: 20px;
+    border-radius: $borderRad;
+}
+
+.rightContent {
+    background-color: #b3b3b3;
+    height: 390px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: $borderRad;
+}
+
+.loading {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+// import bootstrap scss at the bottom
+@import "~bootstrap/scss/bootstrap.scss";
