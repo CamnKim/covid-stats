@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Container, Row, Col } from "react-bootstrap"
-import Map from "../components/Map"
+import Dashboard from "../components/Dashboard"
 
 function US() {
     useEffect(() => {
@@ -10,7 +9,6 @@ function US() {
     const [isLoading, setLoading] = useState(true)
     const [dataSets, setData] = useState({})
     //const [dead, setDead] = useState([])
-    const [mapMode, setMapMode] = useState("positive")
 
     const fetchItems = async () => {
         setLoading(true)
@@ -38,48 +36,10 @@ function US() {
         setLoading(false)
     }
 
-    const handeClick = mode => {
-        setMapMode(mode)
-    }
-
-    const changeMap = () => {
-        const { positive, dead } = dataSets
-        if (mapMode == "positive") {
-            console.log(positive)
-            return positive
-        } else if (mapMode == "dead") {
-            return dead
-        }
-    }
-
     return isLoading ? (
         <h1 className="loading">Loading...</h1>
     ) : (
-        <Container fluid className="parent">
-            <Row>
-                <Col md={4}>
-                    <Container fluid>
-                        <div className="barParent"></div>
-                    </Container>
-                </Col>
-                <Col md={8}>
-                    <Container fluid>
-                        <Row>
-                            <Col>
-                                <div className="rightContent lineParent"></div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <div className="rightContent mapParent">
-                                    <Map dataSet={changeMap()} />
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-        </Container>
+        <Dashboard mapData={dataSets} />
     )
 }
 {

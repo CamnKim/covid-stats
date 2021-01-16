@@ -10,6 +10,7 @@ function Map({ dataSet }) {
             options={{
                 region: "US",
                 resolution: "provinces",
+                backgroundColor: "#b3b3b3",
                 colorAxis: { colors: ["#ffffff", "#670000"] },
             }}
             mapsApiKey="AIzacSyBYadQAJXODEQRhsejrRKqq33u4ueKgDXU"
