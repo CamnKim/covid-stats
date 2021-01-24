@@ -1,23 +1,24 @@
 import React, { useState } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import Map from "./Map"
-import { ReactComponent as PosSvg } from "../images/positive.svg"
-import { ReactComponent as DeathSvg } from "../images/death.svg"
 
 function Dashboard({ mapData }) {
     const [mapMode, setMapMode] = useState("positive")
 
-    const handeClick = mode => {
-        setMapMode(mode)
+    const handeClick = event => {
+        setMapMode(event.target.name)
     }
 
     const changeMap = () => {
-        const { positive, dead } = mapData
-        if (mapMode == "positive") {
-            console.log(positive)
-            return positive
-        } else if (mapMode == "dead") {
-            return dead
+        const { positive, dead, ventilator, icu } = mapData
+        if (mapMode === "positive") {
+            return [positive, "Cases"]
+        } else if (mapMode === "dead") {
+            return [dead, "Deaths"]
+        } else if (mapMode === "ventilator") {
+            return [ventilator, "On Ventilator"]
+        } else if (mapMode === "icu") {
+            return [icu, "Currently in ICU"]
         }
     }
     return (
@@ -25,36 +26,60 @@ function Dashboard({ mapData }) {
             <Row>
                 <Col md={4}>
                     <Container fluid>
-                        <div className="barParent"></div>
+                        <div className="leftContent">
+                            <div className="barSectionHeader">
+                                <p>US National Statistics</p>
+                            </div>
+                        </div>
                     </Container>
                 </Col>
                 <Col md={8}>
                     <Container fluid>
                         <Row>
                             <Col>
-                                <div className="rightContent lineParent"></div>
+                                <div className="rightContent">
+                                    <div className="sectionHeader">
+                                        <p>US Statistics Over Time</p>
+                                    </div>
+                                    <div className="lineParent"></div>
+                                </div>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                                 <div className="rightContent">
-                                    <div className="mapHeader">
-                                        <p>US State Data</p>
+                                    <div className="sectionHeader">
+                                        <p>US State Statistics</p>
                                         <button
-                                            onClick={() => {
-                                                handeClick("positive")
-                                            }}>
+                                            className="data-btn"
+                                            onClick={handeClick}
+                                            name="positive">
                                             Positive
                                         </button>
                                         <button
-                                            onClick={() => {
-                                                handeClick("dead")
-                                            }}>
+                                            className="data-btn"
+                                            onClick={handeClick}
+                                            name="dead">
                                             Dead
+                                        </button>
+                                        <button
+                                            className="data-btn"
+                                            onClick={handeClick}
+                                            name="ventilator">
+                                            Ventilator
+                                        </button>
+                                        <button
+                                            className="data-btn"
+                                            onClick={handeClick}
+                                            name="icu">
+                                            ICU
                                         </button>
                                     </div>
                                     <div className="mapParent">
-                                        <Map dataSet={changeMap()} />
+                                        <Map
+                                            dataSet={changeMap()[0]}
+                                            dataTitle={changeMap()[1]}
+                                        />
                                     </div>
                                 </div>
                             </Col>

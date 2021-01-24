@@ -74,7 +74,7 @@ body {
     }
 }
 
-.barParent {
+.leftContent {
     background-color: #b3b3b3;
     height: 90vh;
     margin-bottom: 2vh;
@@ -89,14 +89,31 @@ body {
     border-radius: $borderRad;
 }
 
-.mapHeader {
+.sectionHeader {
     background-image: $gradientNav;
     height: 10%;
     width: 100%;
     display: flex;
+    align-items: center;
 
     border-radius: 15px 15px 0px 0px;
     p {
+        margin-top: 15px;
+        margin-left: 10px;
+        color: white;
+    }
+}
+
+.barSectionHeader {
+    background-image: $gradientNav;
+    height: 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    border-radius: 15px 15px 0px 0px;
+    p {
+        margin-top: 15px;
         margin-left: 10px;
         color: white;
     }
@@ -113,5 +130,19 @@ body {
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.data-btn {
+    background-color: #404040;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 10px;
+    margin-left: 5px;
+    &:hover {
+        background-color: #505050;
+    }
+}
+
 // import bootstrap scss at the bottom
 @import "~bootstrap/scss/bootstrap.scss";
