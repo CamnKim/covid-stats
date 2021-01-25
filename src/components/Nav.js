@@ -1,7 +1,7 @@
 import React from "react"
 import { Navbar, Nav } from "react-bootstrap"
 
-function Navi() {
+function Navigation() {
     return (
         <Navbar sticky="top" collapseOnSelect expand="md" variant="dark">
             <Navbar.Brand href="/">COVID STATS</Navbar.Brand>
@@ -23,4 +23,4 @@ function Navi() {
     )
 }
 
-export default Navi
+export default Navigation

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Container, Row, Col, Fade } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 
 function Home() {
     useEffect(() => {
