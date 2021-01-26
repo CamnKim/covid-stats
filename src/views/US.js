@@ -10,7 +10,7 @@ function US() {
     const [mapDataSets, setMapData] = useState({})
 
     // stored in this order: positive, dead, ventilator, ICU, new cases, new dead
-    const [usData, setUSData] = useState([])
+    const [usData, setUSData] = useState({})
 
     const fetchData = async () => {
         setLoading(true)
@@ -55,18 +55,18 @@ function US() {
             death,
             onVentilatorCurrently,
             positiveIncrease,
-            deathIncrease
+            deathIncrease,
         } = USDataOBJ
-        let data = [
-            positive,
-            death,
-            onVentilatorCurrently,
-            inIcuCurrently,
-            positiveIncrease,
-            deathIncrease
-        ]
+        let data = {
+            positive: positive,
+            dead: death,
+            ventilator: onVentilatorCurrently,
+            ICU: inIcuCurrently,
+            posInc: positiveIncrease,
+            deadInc: deathIncrease,
+        }
+
         setUSData(data)
-        //console.log(usData)
 
         setLoading(false)
     }
@@ -74,7 +74,7 @@ function US() {
     return isLoading ? (
         <h1 className="loading">Loading...</h1>
     ) : (
-        <Dashboard mapData={mapDataSets} barData={usData} />
+        <Dashboard mapData={mapDataSets} leftData={usData} />
     )
 }
 

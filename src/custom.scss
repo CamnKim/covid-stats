@@ -104,7 +104,7 @@ body {
     }
 }
 
-.barSectionHeader {
+.leftSectionHeader {
     background-image: $gradientNav;
     height: 5%;
     width: 100%;
@@ -116,6 +116,20 @@ body {
         margin-top: 15px;
         margin-left: 10px;
         color: white;
+    }
+}
+
+.leftParent {
+    color: white;
+    width: 100%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .stat {
+        color: #ef271b;
+        margin-bottom: 5px;
     }
 }
 

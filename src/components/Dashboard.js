@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import Map from "./Map"
 import SideChart from "./SideChart"
 
-function Dashboard({ mapData, barData }) {
+function Dashboard({ mapData, leftData }) {
     const [mapMode, setMapMode] = useState("positive")
 
     const handeClick = event => {
@@ -28,11 +28,11 @@ function Dashboard({ mapData, barData }) {
                 <Col md={4}>
                     <Container fluid>
                         <div className="leftContent">
-                            <div className="barSectionHeader">
+                            <div className="leftSectionHeader">
                                 <p>US National Statistics</p>
                             </div>
-                            <div className='barParent'>
-                                <SideChart data={barData} />
+                            <div className="leftParent">
+                                <SideChart leftData={leftData} />
                             </div>
                         </div>
                     </Container>
