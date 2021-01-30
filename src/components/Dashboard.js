@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import Map from "./Map"
 import SideChart from "./SideChart"
+import Linechart from "./Linechart"
 
-function Dashboard({ mapData, leftData }) {
+function Dashboard({ mapData, leftData, lineData }) {
     const [mapMode, setMapMode] = useState("positive")
 
     const handeClick = event => {
@@ -45,7 +46,9 @@ function Dashboard({ mapData, leftData }) {
                                     <div className="sectionHeader">
                                         <p>US Statistics Over Time</p>
                                     </div>
-                                    <div className="lineParent"></div>
+                                    <div className="lineParent">
+                                        <Linechart lineData={lineData} />
+                                    </div>
                                 </div>
                             </Col>
                         </Row>

@@ -12,12 +12,15 @@ function US() {
     // stored in this order: positive, dead, ventilator, ICU, new cases, new dead
     const [usData, setUSData] = useState({})
 
+    const [usDaily, setUSDaily] = useState({})
+
     const fetchData = async () => {
         setLoading(true)
         // api used to get US covid data, requires a cors proxy
         const corsProxy = "https://cors-anywhere.herokuapp.com/"
         const covidApiState = "https://covidtracking.com/api/states"
         const covidApiUS = "https://api.covidtracking.com/v1/us/current.json"
+        const covidUSDaily = "https://api.covidtracking.com/v1/us/daily.json"
 
         // fetching state data from proxy
         const stateData = await fetch(corsProxy + covidApiState)
@@ -65,8 +68,43 @@ function US() {
             posInc: positiveIncrease,
             deadInc: deathIncrease,
         }
-
         setUSData(data)
+
+        // fetching US historical data
+        const usHist = await fetch(corsProxy + covidUSDaily)
+        const histDataJson = await usHist.json()
+
+        setUSDaily({
+            date: histDataJson.map(element => {
+                const { date } = element
+                let dateString = date.toString()
+                const parsedDate = `${dateString.substring(
+                    4,
+                    6
+                )}/${dateString.substring(6)}/${dateString.substring(0, 4)}`
+                return parsedDate
+            }),
+
+            positive: histDataJson.map(element => {
+                const { positive } = element
+                return positive
+            }),
+
+            dead: histDataJson.map(element => {
+                const { death } = element
+                return death
+            }),
+
+            ventilator: histDataJson.map(element => {
+                const { onVentilatorCurrently } = element
+                return onVentilatorCurrently
+            }),
+
+            icu: histDataJson.map(element => {
+                const { inIcuCurrently } = element
+                return inIcuCurrently
+            }),
+        })
 
         setLoading(false)
     }
@@ -74,7 +112,7 @@ function US() {
     return isLoading ? (
         <h1 className="loading">Loading...</h1>
     ) : (
-        <Dashboard mapData={mapDataSets} leftData={usData} />
+        <Dashboard mapData={mapDataSets} leftData={usData} lineData={usDaily} />
     )
 }
 
