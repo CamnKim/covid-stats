@@ -6,9 +6,14 @@ import Linechart from "./Linechart"
 
 function Dashboard({ mapData, leftData, lineData }) {
     const [mapMode, setMapMode] = useState("positive")
+    const [lineMode, setLineMode] = useState("positive")
 
-    const handeClick = event => {
+    const handeMapClick = event => {
         setMapMode(event.target.name)
+    }
+
+    const handeLineClick = event => {
+        setLineMode(event.target.name)
     }
 
     const changeMap = () => {
@@ -23,6 +28,44 @@ function Dashboard({ mapData, leftData, lineData }) {
             return [icu, "Currently in ICU"]
         }
     }
+
+    const changeLine = () => {
+        const { positive, dead, ventilator, icu } = lineData
+        if (lineMode === "positive") {
+            return {
+                label: "Positive",
+                data: positive,
+                fill: false,
+                backgroundColor: "rgb(239, 39, 27)",
+                borderColor: "rgba(239, 39, 27, 0.2)",
+            }
+        } else if (lineMode === "dead") {
+            return {
+                label: "Dead",
+                data: dead,
+                fill: false,
+                backgroundColor: "rgb(64, 64, 64)",
+                borderColor: "rgba(64, 64, 64, 0.2)",
+            }
+        } else if (lineMode === "ventilator") {
+            return {
+                label: "Ventilator",
+                data: ventilator,
+                fill: false,
+                backgroundColor: "rgb(51, 51, 255)",
+                borderColor: "rgba(51, 51, 255, 0.2)",
+            }
+        } else if (lineMode === "icu") {
+            return {
+                label: "ICU",
+                data: icu,
+                fill: false,
+                backgroundColor: "rgb(255, 255, 0)",
+                borderColor: "rgba(255, 255, 0, 0.2)",
+            }
+        }
+    }
+
     return (
         <Container fluid className="parent">
             <Row>
@@ -45,9 +88,33 @@ function Dashboard({ mapData, leftData, lineData }) {
                                 <div className="rightContent">
                                     <div className="sectionHeader">
                                         <p>US Statistics Over Time</p>
+                                        <button
+                                            className="data-btn"
+                                            onClick={handeLineClick}
+                                            name="positive">
+                                            Positive
+                                        </button>
+                                        <button
+                                            className="data-btn"
+                                            onClick={handeLineClick}
+                                            name="dead">
+                                            Dead
+                                        </button>
+                                        <button
+                                            className="data-btn"
+                                            onClick={handeLineClick}
+                                            name="ventilator">
+                                            Ventilator
+                                        </button>
+                                        <button
+                                            className="data-btn"
+                                            onClick={handeLineClick}
+                                            name="icu">
+                                            ICU
+                                        </button>
                                     </div>
                                     <div className="lineParent">
-                                        <Linechart lineData={lineData} />
+                                        <Linechart lineData={changeLine()} date={lineData.date} />
                                     </div>
                                 </div>
                             </Col>
@@ -59,25 +126,25 @@ function Dashboard({ mapData, leftData, lineData }) {
                                         <p>US State Statistics</p>
                                         <button
                                             className="data-btn"
-                                            onClick={handeClick}
+                                            onClick={handeMapClick}
                                             name="positive">
                                             Positive
                                         </button>
                                         <button
                                             className="data-btn"
-                                            onClick={handeClick}
+                                            onClick={handeMapClick}
                                             name="dead">
                                             Dead
                                         </button>
                                         <button
                                             className="data-btn"
-                                            onClick={handeClick}
+                                            onClick={handeMapClick}
                                             name="ventilator">
                                             Ventilator
                                         </button>
                                         <button
                                             className="data-btn"
-                                            onClick={handeClick}
+                                            onClick={handeMapClick}
                                             name="icu">
                                             ICU
                                         </button>

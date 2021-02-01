@@ -1,18 +1,10 @@
 import { Line } from "react-chartjs-2"
 
-function Linechart({ lineData }) {
+function Linechart({ lineData, date}) {
     console.log(lineData.positive)
     const data = {
-        labels: lineData.date.reverse(),
-        datasets: [
-            {
-                label: "US Historical Data",
-                data: lineData.positive.reverse(),
-                fill: false,
-                backgroundColor: "rgb(255, 99, 132)",
-                borderColor: "rgba(255, 99, 132, 0.2)",
-            },
-        ],
+        labels: date,
+        datasets: [lineData],
     }
 
     const options = {

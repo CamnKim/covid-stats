@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Navigation from "./components/Nav"
 import Home from "./views/Home"
 import US from "./views/US"
-import EU from "./views/EU"
-import Global from "./views/Global"
+import About from './views/About'
 
 function App() {
     return (
@@ -14,8 +13,7 @@ function App() {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/US" component={US} />
-                <Route path="/EU" component={EU} />
-                <Route path="/Global" component={Global} />
+                <Route path="/About" component={About} />
             </Switch>
         </Router>
     )

@@ -11,11 +11,8 @@ function Navigation() {
                     <Nav.Link href="/US" className="ml-3">
                         US
                     </Nav.Link>
-                    <Nav.Link href="/EU" className="ml-3">
-                        EU
-                    </Nav.Link>
-                    <Nav.Link href="/Global" className="ml-3">
-                        Global
+                    <Nav.Link href="/About" className="ml-3">
+                        About
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>

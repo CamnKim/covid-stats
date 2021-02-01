@@ -83,27 +83,27 @@ function US() {
                     6
                 )}/${dateString.substring(6)}/${dateString.substring(0, 4)}`
                 return parsedDate
-            }),
+            }).reverse(),
 
             positive: histDataJson.map(element => {
                 const { positive } = element
                 return positive
-            }),
+            }).reverse(),
 
             dead: histDataJson.map(element => {
                 const { death } = element
                 return death
-            }),
+            }).reverse(),
 
             ventilator: histDataJson.map(element => {
                 const { onVentilatorCurrently } = element
                 return onVentilatorCurrently
-            }),
+            }).reverse(),
 
             icu: histDataJson.map(element => {
                 const { inIcuCurrently } = element
                 return inIcuCurrently
-            }),
+            }).reverse(),
         })
 
         setLoading(false)

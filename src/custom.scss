@@ -153,7 +153,7 @@ body {
     border-radius: 0px 0px 15px 15px;
 }
 
-.LineParent {
+.lineParent {
     height: 85%;
     width: 100%;
 }
@@ -174,6 +174,15 @@ body {
     &:hover {
         background-color: #505050;
     }
+}
+
+.about {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
 }
 
 // import bootstrap scss at the bottom
