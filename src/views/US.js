@@ -17,13 +17,13 @@ function US() {
     const fetchData = async () => {
         setLoading(true)
         // api used to get US covid data, requires a cors proxy
-        const corsProxy = "https://cors-anywhere.herokuapp.com/"
+        //const corsProxy = "https://cors-anywhere.herokuapp.com/"
         const covidApiState = "https://covidtracking.com/api/states"
         const covidApiUS = "https://api.covidtracking.com/v1/us/current.json"
         const covidUSDaily = "https://api.covidtracking.com/v1/us/daily.json"
 
         // fetching state data from proxy
-        const stateData = await fetch(corsProxy + covidApiState)
+        const stateData = await fetch(covidApiState)
         const stateDataJson = await stateData.json()
 
         // storing the state data sets as arrays in an object
@@ -49,7 +49,7 @@ function US() {
             }),
         })
 
-        const USData = await fetch(corsProxy + covidApiUS)
+        const USData = await fetch(covidApiUS)
         const USDataJson = await USData.json()
         const USDataOBJ = USDataJson.pop()
         const {
@@ -71,7 +71,7 @@ function US() {
         setUSData(data)
 
         // fetching US historical data
-        const usHist = await fetch(corsProxy + covidUSDaily)
+        const usHist = await fetch(covidUSDaily)
         const histDataJson = await usHist.json()
 
         setUSDaily({
